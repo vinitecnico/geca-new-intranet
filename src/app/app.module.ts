@@ -9,6 +9,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { environment } from '../environments/environment';
 
+// Apollo
+import { GraphQLModule } from './graphql.module';
+
 export function getLocalStorage() {
   return (typeof window !== 'undefined') ? window.localStorage : null;
 }
@@ -43,7 +46,8 @@ import { LayoutComponent } from './layout/layout.component';
     AuthenticationModule,
     WebsiteSettingsModule,
     NgbModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    GraphQLModule
   ],
   providers: [
   //    {
