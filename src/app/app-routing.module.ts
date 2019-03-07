@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { LayoutComponent } from './layout/layout.component';
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+const AppRoutes: Routes = [
+    { path: '', redirectTo: '/app/product', pathMatch: 'full' },
+    { path: 'app', component: LayoutComponent },
+    { path: '**', redirectTo: '/app/product', pathMatch: 'full' },
+];
+
+export const AppRoutingModule = RouterModule.forRoot(AppRoutes);
