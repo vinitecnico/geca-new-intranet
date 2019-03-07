@@ -1,6 +1,6 @@
 import { Injectable, Inject, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import * as Query from '../query/global-query';
+import * as Query from '../../query/global-query';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -16,8 +16,8 @@ export class AuthenticationService {
             .mutate({
                 mutation: Query.deliveryPrice,
                 variables: {
-                    zipcode: zipcode,
-                    totalPrice: totalPrice
+                    // zipcode: zipcode,
+                    // totalPrice: totalPrice
                 }
             });
     }
