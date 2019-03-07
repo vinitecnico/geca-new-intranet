@@ -6,7 +6,7 @@ import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
 // const uri = 'http://localhost:4000/graphql'; // Development
-const uri = 'https://rbmania-api.herokuapp.com/graphql'; // Production
+const uri = 'https://gecanewsapi.herokuapp.com/graphql'; // Production
 
 @NgModule({
   exports: [
