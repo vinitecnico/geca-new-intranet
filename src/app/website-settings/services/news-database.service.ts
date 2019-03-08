@@ -23,4 +23,14 @@ export class NewsDatabaseService {
                 }
             });
     }
+
+    getById(_id) {
+        return this.apollo
+            .mutate({
+                mutation: Query.getByIdNewsDatabase,
+                variables: {
+                    id: _id
+                }
+            });
+    }
 }

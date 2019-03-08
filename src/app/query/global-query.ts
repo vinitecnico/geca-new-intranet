@@ -28,6 +28,16 @@ export const loginUser = gql`
     }
   }`;
 
+  export const getByIdNewsDatabase = gql`
+  mutation getByIdNewsDatabase($id: String!) {
+    getByIdNewsDatabase(id: $id) {
+      id
+      name
+      url
+      status
+    }
+  }`;
+
   export const filterNews = gql`
   mutation filterNews($value: String!, $page: String!, $perPage: String!, $active: String!, $direction: String!, $status: String!) {
     filterNews(value: $value, page: $page, perPage: $perPage, active: $active, direction: $direction, status: $status) {

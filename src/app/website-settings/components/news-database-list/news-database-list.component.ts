@@ -10,7 +10,7 @@ declare var swal: any;
 // import { College } from '../../classes/college.class';
 
 // services
-import { NewsDatabaseService } from '../../services/news-database.services';
+import { NewsDatabaseService } from '../../services/news-database.service';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component({

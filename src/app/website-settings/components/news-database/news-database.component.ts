@@ -1,0 +1,81 @@
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+// import { College } from '../../classes/college.class';
+import * as _ from 'lodash';
+declare var swal: any;
+
+// services
+import { NewsDatabaseService } from '../../services/news-database.service';
+
+@Component({
+    selector: 'app-news-database',
+    templateUrl: './news-database.component.html'
+})
+
+export class NewsDatabaseComponent implements OnInit {
+    typeStatus = [{value: 'Ativo', key: true}, {value: 'Inativo', key: false}]
+    form: any;
+    _id: string;
+    constructor(private router: Router,
+        private route: ActivatedRoute,
+        private formBuilder: FormBuilder,
+        private newsDatabaseService: NewsDatabaseService) {
+        this.route.queryParams.subscribe(params => {
+            this._id = params['_id'];
+        });
+    }
+
+    ngOnInit() {
+        this.form = this.formBuilder.group({
+            id: [null],
+            name: [null, Validators.required],
+            url: [null, Validators.required],
+            status: [null, Validators.required]
+        });
+
+        if (this._id) {
+            this.newsDatabaseService.getById(this._id)
+                .subscribe((response) => {
+                    if (response && response.data && response.data.getByIdNewsDatabase) {
+                        this.setValueData(response.data.getByIdNewsDatabase);
+                    } else {
+                        this.router.navigateByUrl('/app/newsdatabaselist');
+                    }
+                });
+        }
+    }
+
+    setValueData(request): void {
+        const data = {
+            id: request.id,
+            name: request.name,
+            url: request.url,
+            status: request.status
+        };
+
+        this.form.setValue(data);
+    }
+
+    save() {
+        if (!this.form.valid) {
+            return;
+        }
+
+        const request = this.form.value;
+        // this.collegeService.createOrUpdateCollege(request)
+        //     .subscribe((response) => {
+        //         swal({
+        //             text: `Colégio ${!request._id ? 'criado' : 'alterado'} com sucesso!`,
+        //             type: 'success'
+        //         }).then(() => {
+        //             this.router.navigateByUrl('/registration/college-list');
+        //         });
+        //     }, (error) => {
+        //         swal({
+        //             text: 'Erro para criar Colégio!',
+        //             type: 'error'
+        //         });
+        //     });
+    }
+}

@@ -24,11 +24,12 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductModalComponent } from './components/product/product-modal/product-modal.component';
 import { DeleteConfirmModalComponent } from './components/delete-confirm-modal/delete-confirm-modal.component';
 import { NewsDatabaseListComponent } from './components/news-database-list/news-database-list.component';
+import { NewsDatabaseComponent } from './components/news-database/news-database.component';
 
 // Services
 import { ProductService } from './services/product.service';
 import { MenuService } from './services/menu.service';
-import { NewsDatabaseService } from './services/news-database.services';
+import { NewsDatabaseService } from './services/news-database.service';
 
 // Router
 import { WebsiteRoutingModule } from './website-routing.module';
@@ -62,7 +63,8 @@ import { SharedModule } from '../shared/shared.module';
         ProductComponent,
         ProductModalComponent,
         DeleteConfirmModalComponent,
-        NewsDatabaseListComponent
+        NewsDatabaseListComponent,
+        NewsDatabaseComponent
     ],
     entryComponents: [
         ProductModalComponent, DeleteConfirmModalComponent
