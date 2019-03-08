@@ -11,13 +11,13 @@ export class AuthenticationService {
         @Inject('LocalStorage') localStorage) {
     }
 
-    login(authData: {username: string, password: string}) {
+    login(email: string, password: string) {
         return this.apollo
             .mutate({
-                mutation: Query.deliveryPrice,
+                mutation: Query.loginUser,
                 variables: {
-                    // zipcode: zipcode,
-                    // totalPrice: totalPrice
+                    email: email,
+                    password: password
                 }
             });
     }

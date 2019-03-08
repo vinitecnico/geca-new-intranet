@@ -1,0 +1,24 @@
+<div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+        <div class="row m-0" style="padding-left: 0;">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>{{title}}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8" style="padding-right: 0;">
+                <div class="page-header float-right">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a [routerLink]="['/app/dashboard']">Dashboard</a></li>
+                          <li class="breadcrumb-item"><a>{{domain}}</a></li>
+                          <li class="breadcrumb-item active" aria-current="page"><a class="active">{{page}}</a></li>
+                        </ol>
+                      </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

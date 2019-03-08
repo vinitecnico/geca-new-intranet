@@ -47,3 +47,39 @@ footer a {
     text-align: right;
     margin-top: 4%;
 }
+
+.table-container {
+  display: flex;
+  flex-direction: column;
+  max-height: 100%; //min-width: 300px;
+  width: 100%;
+}
+
+button.btn-new {
+  margin-bottom: 1%;
+}
+
+.table-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+  .mat-form-field {
+      font-size: 14px;
+      width: 25%;
+  }
+}
+
+.mat-cell{
+  text-transform: capitalize;
+}
+
+.mat-icon {
+  cursor: pointer;
+}
+
+.mat-cell.mat-column-edit,
+.mat-cell.mat-column-custom,
+.mat-header-cell.mat-column-edit,
+.mat-cell.mat-column-active,
+.mat-header-cell.mat-column-active {
+    flex: 0 0 75px;
+}

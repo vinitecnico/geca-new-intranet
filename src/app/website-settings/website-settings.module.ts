@@ -23,10 +23,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductModalComponent } from './components/product/product-modal/product-modal.component';
 import { DeleteConfirmModalComponent } from './components/delete-confirm-modal/delete-confirm-modal.component';
+import { NewsDatabaseListComponent } from './components/news-database-list/news-database-list.component';
 
 // Services
 import { ProductService } from './services/product.service';
 import { MenuService } from './services/menu.service';
+import { NewsDatabaseService } from './services/news-database.services';
 
 // Router
 import { WebsiteRoutingModule } from './website-routing.module';
@@ -59,11 +61,12 @@ import { SharedModule } from '../shared/shared.module';
         DashboardComponent,
         ProductComponent,
         ProductModalComponent,
-        DeleteConfirmModalComponent
+        DeleteConfirmModalComponent,
+        NewsDatabaseListComponent
     ],
     entryComponents: [
         ProductModalComponent, DeleteConfirmModalComponent
     ],
-    providers: [ProductService, MenuService]
+    providers: [ProductService, MenuService, NewsDatabaseService]
 })
 export class WebsiteSettingsModule { }

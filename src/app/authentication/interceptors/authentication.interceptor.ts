@@ -11,7 +11,6 @@ export class AuthenticationInterceptor implements HttpInterceptor {
     constructor(@Inject('LocalStorage') localStorage, private router: Router) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
         const auth = localStorage.getItem('authData');
         const authObj = JSON.parse(auth);
         const isTokenValid = this.validateAuthenticationToken(authObj);
@@ -20,37 +19,37 @@ export class AuthenticationInterceptor implements HttpInterceptor {
             return next.handle(request);
         }
 
-    //    if (isTokenValid) {
-    //         if (!request.headers.has('authorization')) {
-    //             request = request.clone({ headers: request.headers.set('authorization', `Bearer ${authObj.token}`) });
-    //         }
+        if (isTokenValid) {
+            if (!request.headers.has('authorization')) {
+                request = request.clone({ headers: request.headers.set('authorization', `Bearer ${authObj.token}`) });
+            }
 
-    //         if (!request.headers.has('content-Type')) {
-    //             request = request.clone({ headers: request.headers.set('content-Type', 'application/json') });
-    //         }
+            if (!request.headers.has('content-Type') && request.url.indexOf('api/dropbox/upload') < 0) {
+                request = request.clone({ headers: request.headers.set('content-Type', 'application/json') });
+            }
 
-    //         // setting the accept header
-    //         if (!request.headers.has('accept')) {
-    //             request = request.clone({ headers: request.headers.set('accept', 'application/json') });
-    //         }
+            // setting the accept header
+            if (!request.headers.has('accept') && request.url.indexOf('api/dropbox/upload') < 0) {
+                request = request.clone({ headers: request.headers.set('accept', 'application/json') });
+            }
 
-    //         // send the newly created request
-    //         return next.handle(request)
-    //             .pipe(
-    //                 catchError(error => {
-    //                     // checks if a url is to an admin api or not
-    //                     if (error.status === 401 || error.status === 403) {
-    //                         // attempting to refresh our token
-    //                         localStorage.removeItem('authData');
-    //                         this.router.navigateByUrl('/login');
-    //                     }
-    //                     return throwError(error);
-    //                 }));
-    //     }
+            // send the newly created request
+            return next.handle(request)
+                .pipe(
+                    catchError(error => {
+                        // checks if a url is to an admin api or not
+                        if (error.status === 401 || error.status === 403) {
+                            // attempting to refresh our token
+                            localStorage.removeItem('authData');
+                            this.router.navigateByUrl('/login');
+                        }
+                        return throwError(error);
+                    }));
+        }
 
-    //     if (authObj != null && !isTokenValid) {
-    //         this.router.navigateByUrl('/login');
-    //     }
+        if (authObj != null && !isTokenValid) {
+            this.router.navigateByUrl('/login');
+        }
 
         return next.handle(request);
     }

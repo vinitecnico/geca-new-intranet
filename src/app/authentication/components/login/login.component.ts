@@ -40,22 +40,33 @@ export class LoginComponent implements OnInit {
     }
 
     const request = this.form.value;
-    request.username = btoa(request.username);
-    request.password = btoa(request.password);
+    this.authenticationService.login(request.username, request.password)
+      .pipe(
+        takeUntil(this.unsubscribe)
+      )
+      .subscribe((response) => {        
+        if (!response || !response.data || !response.data.loginUser) {
+          return;
+        }
 
-    // this.authenticationService.login(request)
-    //   .subscribe(response => {
-    //     if (!response || response.length <= 0) {
-    //       swal({
-    //         text: 'Usuário ou senha inválido!',
-    //         type: 'error'
-    //       });
-    //       return;
-    //     }
+        const auth = response.data.loginUser;
 
-    //     localStorage.setItem('authData', JSON.stringify({ expires_in: moment().add(30, 'minutes') }));
-    //     this.router.navigateByUrl('/app/product');
-    //   });
+        if (!auth.sucess){
+          swal({
+            text: auth.messsage,
+            type: 'warning'
+          });
+          return;
+        }
+
+        localStorage.setItem('authData', JSON.stringify({ name: auth.name, token: auth.token }));
+        this.router.navigateByUrl('/app/dashboard');
+      }, (error) => {
+        swal({
+          text: 'Usuário ou senha inválido!',
+          type: 'warning'
+        });
+      });
   }
 
   getHostErrorMessage(): string {

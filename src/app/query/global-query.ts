@@ -6,11 +6,39 @@
 
 import gql from 'graphql-tag';
 
-export const addUser = gql`
-  mutation addUser($name: String!) {
-    addUser(name: $name) {
-      id
+export const loginUser = gql`
+  mutation loginUser($email: String!, $password: String!) {
+    loginUser(email: $email, password: $password) {
+      sucess
       name
+      messsage
+      token
+    }
+  }`;
+
+  export const filterNewsDatabase = gql`
+  mutation filterNewsDatabase($value: String!, $page: String!, $perPage: String!, $active: String!, $direction: String!, $status: String!) {
+    filterNewsDatabase(value: $value, page: $page, perPage: $perPage, active: $active, direction: $direction, status: $status) {
+      total
+      data {
+        id
+        name
+        status
+      }
+    }
+  }`;
+
+  export const filterNews = gql`
+  mutation filterNews($value: String!, $page: String!, $perPage: String!, $active: String!, $direction: String!, $status: String!) {
+    filterNews(value: $value, page: $page, perPage: $perPage, active: $active, direction: $direction, status: $status) {
+      total
+      data {
+        id
+        title
+        description
+        imageUrl
+        status
+      }
     }
   }`;
 

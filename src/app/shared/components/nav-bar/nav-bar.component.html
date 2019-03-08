@@ -1,21 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom shadow-sm nav-background-color mat-primary">
-    <a class="navbar-brand" [routerLink]="['/home']" (click)="isCollapsed = !isCollapsed">#GecaNews!</a>
-    <!-- <button class="navbar-toggler d-lg-none" 
+    <a class="navbar-brand" [routerLink]="['/app/dashboard']" (click)="isCollapsed = !isCollapsed">#GecaNews!</a>
+    <button class="navbar-toggler d-lg-none" 
             type="button" 
             (click)="isCollapsed = !isCollapsed" 
             [attr.aria-expanded]="!isCollapsed"
             aria-controls="navbarsExampleDefault" 
             aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-    </button> -->
-    <!-- <div class="collapse navbar-collapse" id="navbarsExampleDefault" [collapse]="isCollapsed">
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault" [collapse]="isCollapsed">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/']" (click)="isCollapsed = !isCollapsed">
-                    <i class="fa fa-beer"></i> {{'brewdogBeers' | translate}}
+                <a class="nav-link" [routerLink]="['/app/newsdatabaselist']" (click)="isCollapsed = !isCollapsed">
+                    <i class="fa fa-database"></i> Database
                 </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link" [routerLink]="['/star-wars']" (click)="isCollapsed = !isCollapsed">
                     <i class="fa fa-space-shuttle"></i> {{'starWars' | translate}}
                 </a>
@@ -48,7 +48,7 @@
                         </mat-list>
                     </mat-menu>
                 </a>
-            </li>
+            </li> -->
         </ul>
-    </div> -->
+    </div>
 </nav>

@@ -5,12 +5,16 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgbModule, NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BlockUIModule } from 'ng-block-ui';
+import { BlockUIHttpModule } from 'ng-block-ui/http';
 
 import { environment } from '../environments/environment';
 
 // Apollo
 import { GraphQLModule } from './graphql.module';
+
+import { AuthenticationInterceptor } from './authentication/interceptors/authentication.interceptor';
 
 export function getLocalStorage() {
   return (typeof window !== 'undefined') ? window.localStorage : null;
@@ -47,14 +51,16 @@ import { LayoutComponent } from './layout/layout.component';
     WebsiteSettingsModule,
     NgbModule.forRoot(),
     HttpClientModule,
-    GraphQLModule
+    GraphQLModule,
+    BlockUIModule.forRoot(),
+    BlockUIHttpModule.forRoot({
+      requestFilters: []
+    })
   ],
   providers: [
-  //    {
-  //   provide: LOCALE_ID,
-  //   useValue: 'br'
-  // },
-  { provide: 'LocalStorage', useFactory: getLocalStorage }],
+    { provide: 'LocalStorage', useFactory: getLocalStorage },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthenticationInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

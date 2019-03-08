@@ -18,13 +18,19 @@ import {
     MatSelectModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatTooltipModule,
+    MatAutocompleteModule
 } from '@angular/material';
 
 // Components
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
+import { MessageComponent } from './components/message/message.component';
+import { Highlight } from './pipes/highlight.pipe';
 
-// Services
+// services
+import { UtilsService } from './services/utils.service';
 
 @NgModule({
     imports: [
@@ -32,29 +38,33 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
         FormsModule,
         ReactiveFormsModule,
         CommonModule,
-        MatListModule,
-        MatMenuModule,
-        MatButtonModule,
-        MatDialogModule,
-        MatPaginatorModule,
-        MatTableModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatSortModule,
-        MatSelectModule,
+        RouterModule,
+        FormsModule,
+        ReactiveFormsModule,
+        CommonModule,
         MatInputModule,
-        MatDatepickerModule,
-        MatNativeDateModule,
+        MatButtonModule,
+        MatSelectModule,
+        MatTooltipModule,
+        MatAutocompleteModule,
+        MatIconModule,
         NgbCollapseModule,
         CollapseModule.forRoot()
     ],
     declarations: [
-        NavBarComponent
+        NavBarComponent,
+        BreadcrumbComponent,
+        MessageComponent,
+        Highlight
     ],
     exports: [
-        NavBarComponent
+        NavBarComponent,
+        BreadcrumbComponent,
+        MessageComponent,
+        Highlight
     ],
     providers: [
+        UtilsService
     ],
     entryComponents: [
     ]

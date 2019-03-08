@@ -6,6 +6,7 @@ import { AuthGuard } from '../authentication/services/auth-guard.service';
 // components
 import { DashboardComponent } from '../website-settings/components/dashboard/dashboard.component';
 import { ProductComponent } from './components/product/product.component';
+import { NewsDatabaseListComponent } from './components/news-database-list/news-database-list.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         children: [
             { path: 'dashboard', component: DashboardComponent },
-            { path: 'product', component: ProductComponent }
+            { path: 'product', component: ProductComponent },
+            { path: 'newsdatabaselist', component: NewsDatabaseListComponent}
         ]
     }
 ];
