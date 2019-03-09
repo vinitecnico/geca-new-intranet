@@ -7,6 +7,7 @@ import * as moment from 'moment';
 
 // Services
 import { UtilsService } from '../../services/utils.service';
+import { StartupConfigService } from '../../services/startup.config.service';
 
 declare var swal: any;
 
@@ -36,6 +37,7 @@ export class UploadComponent implements OnInit, OnDestroy {
 
     constructor(
         private utilsService: UtilsService,
+        private startupConfigService: StartupConfigService,
         @Inject('LocalStorage') localStorage) {
     }
 
@@ -44,8 +46,7 @@ export class UploadComponent implements OnInit, OnDestroy {
         if (!authData) {
             return;
         }
-        const URL = `http://localhost:4000/api/dropbox/upload`;
-        // const URL = `https://gecanewsapi.herokuapp.com/api/dropbox/upload`;
+        const URL = `${this.startupConfigService.getConfig()}api/uploadfile`;
 
         let allowedFileType = [];
         if (this.allFiles) {
