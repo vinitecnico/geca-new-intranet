@@ -76,6 +76,10 @@ button.btn-new {
   cursor: pointer;
 }
 
+.mat-column-status{
+  flex: 0 0 100px;
+}
+
 .mat-cell.mat-column-edit,
 .mat-cell.mat-column-custom,
 .mat-header-cell.mat-column-edit,
