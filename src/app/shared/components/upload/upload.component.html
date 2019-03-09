@@ -1,0 +1,55 @@
+<div class="upload-wrapper">
+    <div [formGroup]="parentForm" novalidate>
+        <mat-form-field class="full-width">
+            <input matInput [placeholder]="placeholder" [formControlName]="controlName" [readonly]="true">
+            <i *ngIf="hasImageUpload"
+               matTooltip="Remover Imagem"
+               [matTooltipPosition]="'above'" 
+               style="color:#d93025; cursor: pointer;" 
+               (click)="removeFile()" 
+               matPrefix 
+               class="fa fa-times">&nbsp;</i>               
+            <mat-error>
+                Campo obrigatório
+            </mat-error>
+            <mat-hint style="font-size: 11px">
+                {{helpMessage}}
+            </mat-hint>
+        </mat-form-field>
+        <a *ngIf="hasImageUpload && allFiles" href="{{imgToPreview}}" target="_blank">
+           <i class="fa fa-download"></i> 
+           Baixar arquivo
+        </a>
+    </div>
+
+    <!-- upload area -->
+    <div ng2FileDrop 
+         *ngIf="!allFiles"
+         [ngClass]="{'nv-file-over': hasBaseDropZoneOver, 'has-file': imgToUpload || imgToPreview }"
+         (fileOver)="fileOverBase($event)" 
+         [uploader]="uploader" 
+         class="well my-drop-zone">
+        <span [hidden]="imgToUpload || imgToPreview">Arraste uma Imagem ou clique no botão</span>
+
+        <!-- preview -->
+        <div [hidden]="!imgToUpload" style="text-align: center;">
+            <img imagePreview 
+                 [image]="imgToUpload?._file" 
+                 style="width: auto; max-height: 330px;max-width: 100%;" />
+        </div>
+
+        <!-- preview from normal img -->
+        <div [hidden]="imgToUpload" style="text-align: center;">
+            <img [src]="imgToPreview ? imgToPreview : ''" 
+                 style="width: auto; max-height: 330px;max-width: 100%;" />
+        </div>
+
+    </div>
+
+    <!-- button -->
+    <input type="file" id="{{controlName}}" ng2FileSelect [uploader]="uploader" style="display:none" />
+    <label for="{{controlName}}" class="mat-raised-button mat-primary"
+        style="margin-bottom: 15px;">{{allFiles ? 'Selecionar arquivo' : 'Selecionar imagem'}}
+    </label>
+
+</div>

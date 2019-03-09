@@ -23,10 +23,14 @@ import {
     MatAutocompleteModule
 } from '@angular/material';
 
+import { FileUploadModule } from 'ng2-file-upload';
+
 // Components
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { MessageComponent } from './components/message/message.component';
+import { ImagePreviewDirective } from './directives/image-preview.directive';
+import { UploadComponent } from './components/upload/upload.component';
 import { Highlight } from './pipes/highlight.pipe';
 
 // services
@@ -49,18 +53,23 @@ import { UtilsService } from './services/utils.service';
         MatAutocompleteModule,
         MatIconModule,
         NgbCollapseModule,
-        CollapseModule.forRoot()
+        CollapseModule.forRoot(),
+        FileUploadModule
     ],
     declarations: [
         NavBarComponent,
         BreadcrumbComponent,
         MessageComponent,
+        ImagePreviewDirective,
+        UploadComponent,
         Highlight
     ],
     exports: [
         NavBarComponent,
         BreadcrumbComponent,
         MessageComponent,
+        UploadComponent,
+        FileUploadModule,
         Highlight
     ],
     providers: [
