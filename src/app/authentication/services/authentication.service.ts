@@ -1,25 +1,28 @@
 import { Injectable, Inject, OnInit } from '@angular/core';
+import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Apollo } from 'apollo-angular';
 import * as Query from '../../query/global-query';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
+// services
+import { StartupConfigService } from 'src/app/shared/services/startup.config.service';
+
+const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable()
 export class AuthenticationService {
-    constructor(private router: Router,
-                 private apollo: Apollo,
+    constructor(private http: HttpClient,
+        private apiConfig: StartupConfigService,
+        private apollo: Apollo,
         @Inject('LocalStorage') localStorage) {
     }
 
-    login(email: string, password: string) {
-        return this.apollo
-            .mutate({
-                mutation: Query.loginUser,
-                variables: {
-                    email: email,
-                    password: password
-                }
-            });
+    login(authData) {
+        const url = `${this.apiConfig.getConfig()}api/login`;
+        return this.http.post(url, authData, httpOptions);
     }
 
     checkLocalData() {

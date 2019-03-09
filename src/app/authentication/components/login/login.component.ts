@@ -40,16 +40,14 @@ export class LoginComponent implements OnInit {
     }
 
     const request = this.form.value;
-    this.authenticationService.login(request.username, request.password)
+    this.authenticationService.login(request)
       .pipe(
         takeUntil(this.unsubscribe)
       )
-      .subscribe((response) => {        
-        if (!response || !response.data || !response.data.loginUser) {
+      .subscribe((auth: any) => {        
+        if (!auth) {
           return;
         }
-
-        const auth = response.data.loginUser;
 
         if (!auth.sucess){
           swal({

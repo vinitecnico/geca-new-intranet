@@ -5,8 +5,8 @@ import { ApolloModule, Apollo } from 'apollo-angular';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-// const uri = 'http://localhost:4000/graphql'; // Development
-const uri = 'https://gecanewsapi.herokuapp.com/graphql'; // Production
+// service
+import { StartupConfigService } from './shared/services/startup.config.service';
 
 @NgModule({
   exports: [
@@ -17,9 +17,11 @@ const uri = 'https://gecanewsapi.herokuapp.com/graphql'; // Production
 })
 export class GraphQLModule {
   constructor(
+    startupConfigService: StartupConfigService,
     apollo: Apollo,
     httpLink: HttpLink
   ) {
+    const uri = `${startupConfigService.getConfig()}graphql`;
     // create Apollo
     apollo.create({
       link: httpLink.create({ uri }),

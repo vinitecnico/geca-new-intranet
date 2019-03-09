@@ -35,6 +35,7 @@ import { Highlight } from './pipes/highlight.pipe';
 
 // services
 import { UtilsService } from './services/utils.service';
+import { StartupConfigService } from './services/startup.config.service';
 
 @NgModule({
     imports: [
@@ -73,6 +74,7 @@ import { UtilsService } from './services/utils.service';
         Highlight
     ],
     providers: [
+        StartupConfigService,
         UtilsService
     ],
     entryComponents: [
