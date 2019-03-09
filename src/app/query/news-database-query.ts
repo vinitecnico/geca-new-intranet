@@ -37,6 +37,13 @@ export const filterNewsDatabase = gql`
     }
   }`;
 
+  export const updateNewsDatabase = gql`
+  mutation updateNewsDatabase($id: String!, $name: String!, $url: String!, $status: Boolean!, $type: String!) {
+    updateNewsDatabase(id: $id:, name: $name, url: $url, status: $status, type: $type) {
+      id
+    }
+  }`;
+
   export const removeNewsDatabase = gql`
   mutation removeNewsDatabase($id: String!) {
     removeNewsDatabase(id: $id) {

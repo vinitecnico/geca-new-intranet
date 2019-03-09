@@ -15,7 +15,7 @@ import { NewsDatabaseService } from '../../services/news-database.service';
 
 export class NewsDatabaseComponent implements OnInit {
     typeStatus = [{value: 'Ativo', key: true}, {value: 'Inativo', key: false}];
-    typesDatabase = ['JSON','Rss'];
+    typesDatabase = ['JSON','RSS'];
     form: any;
     _id: string;
     constructor(private router: Router,

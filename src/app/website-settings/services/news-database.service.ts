@@ -39,7 +39,7 @@ export class NewsDatabaseService {
         if (news.id) {
             return this.apollo
                 .mutate({
-                    mutation: Query.getByIdNewsDatabase,
+                    mutation: Query.updateNewsDatabase,
                     variables: {
                         id: news.id,
                         name: news.name,
