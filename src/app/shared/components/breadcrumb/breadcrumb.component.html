@@ -13,7 +13,12 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                           <li class="breadcrumb-item"><a [routerLink]="['/app/dashboard']">Dashboard</a></li>
-                          <li class="breadcrumb-item"><a>{{domain}}</a></li>
+                          <li class="breadcrumb-item">
+                              <a *ngIf="!subDomain;else subdomainShow">{{domain}}</a>
+                              <ng-template #subdomainShow>
+                                <a [routerLink]="[subDomain]">{{domain}}</a>
+                              </ng-template>
+                            </li>
                           <li class="breadcrumb-item active" aria-current="page"><a class="active">{{page}}</a></li>
                         </ol>
                       </nav>

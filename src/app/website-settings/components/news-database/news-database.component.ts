@@ -14,7 +14,8 @@ import { NewsDatabaseService } from '../../services/news-database.service';
 })
 
 export class NewsDatabaseComponent implements OnInit {
-    typeStatus = [{value: 'Ativo', key: true}, {value: 'Inativo', key: false}]
+    typeStatus = [{value: 'Ativo', key: true}, {value: 'Inativo', key: false}];
+    typesDatabase = ['JSON','Rss'];
     form: any;
     _id: string;
     constructor(private router: Router,
@@ -30,6 +31,7 @@ export class NewsDatabaseComponent implements OnInit {
         this.form = this.formBuilder.group({
             id: [null],
             name: [null, Validators.required],
+            type: [null, Validators.required],
             url: [null, Validators.required],
             status: [null, Validators.required]
         });
@@ -50,6 +52,7 @@ export class NewsDatabaseComponent implements OnInit {
         const data = {
             id: request.id,
             name: request.name,
+            type: request.type,
             url: request.url,
             status: request.status
         };

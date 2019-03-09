@@ -9,6 +9,7 @@ export class BreadcrumbComponent implements OnInit {
     @Input() title: string;
     @Input() domain: string;
     @Input() page: string;
+    @Input() subDomain: string;
 
     constructor() {
     }

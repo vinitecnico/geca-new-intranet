@@ -20,7 +20,7 @@ import { UtilsService } from 'src/app/shared/services/utils.service';
 
 export class NewsDatabaseListComponent implements OnInit {
     // Table elements
-    displayedColumns = ['name', 'status', 'edit', 'delete'];
+    displayedColumns = ['name', 'type', 'status', 'edit', 'delete'];
     dataSource = new MatTableDataSource<any>();
     pageIndex = 0;
     length = 0;

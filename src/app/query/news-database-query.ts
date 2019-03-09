@@ -13,6 +13,7 @@ export const filterNewsDatabase = gql`
       data {
         id
         name
+        type
         status
       }
     }
@@ -23,6 +24,7 @@ export const filterNewsDatabase = gql`
     getByIdNewsDatabase(id: $id) {
       id
       name
+      type
       url
       status
     }
