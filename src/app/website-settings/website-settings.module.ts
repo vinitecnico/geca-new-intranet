@@ -18,6 +18,8 @@ import {
     MatTooltipModule
 } from '@angular/material';
 
+import { NgxEditorModule } from 'ngx-editor';
+
 // Components
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProductComponent } from './components/product/product.component';
@@ -32,6 +34,7 @@ import { NewsComponent } from './components/news/news.component';
 import { ProductService } from './services/product.service';
 import { MenuService } from './services/menu.service';
 import { NewsDatabaseService } from './services/news-database.service';
+import { NewsService } from './services/news.service';
 
 // Router
 import { WebsiteRoutingModule } from './website-routing.module';
@@ -58,7 +61,8 @@ import { SharedModule } from '../shared/shared.module';
         MatTooltipModule,
         SharedModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        NgxEditorModule
     ],
     declarations: [
         DashboardComponent,
@@ -73,6 +77,6 @@ import { SharedModule } from '../shared/shared.module';
     entryComponents: [
         ProductModalComponent, DeleteConfirmModalComponent
     ],
-    providers: [ProductService, MenuService, NewsDatabaseService]
+    providers: [ProductService, MenuService, NewsDatabaseService, NewsService]
 })
 export class WebsiteSettingsModule { }

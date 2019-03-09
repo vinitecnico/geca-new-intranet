@@ -12,13 +12,13 @@ declare var swal: any;
 
 @Component({
     selector: 'app-upload',
-    templateUrl: './upload.component.html',
-    styleUrls: ['./../../../../scss/custom-components/_upload.component.scss']
+    templateUrl: './upload.component.html'
 })
 
 export class UploadComponent implements OnInit, OnDestroy {
     @BlockUI() blockUI: NgBlockUI;
     @Input() parentForm: FormGroup;
+    @Input() controlNameUrl: string;
     @Input() controlName: string;
     @Input() placeholder: string;
     @Input() helpMessage: string;
@@ -62,7 +62,7 @@ export class UploadComponent implements OnInit, OnDestroy {
             autoUpload: false
         });
 
-        this.parentForm.controls['url'].valueChanges.subscribe((value) => {
+        this.parentForm.controls[this.controlNameUrl].valueChanges.subscribe((value) => {
             if (value) {
                 this.imgToPreview = value;
                 this.hasImageUpload = true;
@@ -113,7 +113,7 @@ export class UploadComponent implements OnInit, OnDestroy {
         this.uploader.onSuccessItem = (item, response) => {
             const data = JSON.parse(response);
             this.parentForm.controls[this.controlName].setValue(data.fileName);
-            this.parentForm.controls['url'].setValue(data.url);
+            this.parentForm.controls[this.controlNameUrl].setValue(data.url);
             this.blockUI.stop();
             this.onUploaded.emit(true);
         };
@@ -146,7 +146,7 @@ export class UploadComponent implements OnInit, OnDestroy {
             this.uploader.queue = [];
         }
         this.parentForm.controls[this.controlName].setValue('');
-        this.parentForm.controls['url'].setValue('');
+        this.parentForm.controls[this.controlNameUrl].setValue('');
         this.imgToPreview = null;
         this.imgToUpload = null;
         this.hasImageUpload = false;

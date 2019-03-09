@@ -6,7 +6,7 @@
             <div class="col-12 col-sm-12">
                 <article class="article">
                     <button class="pull-right btn-new" color="primary" mat-raised-button
-                        [routerLink]="['/app/news']">Novo
+                        [routerLink]="['/app/news']">Nova
                         notícia
                     </button>
                 </article>
@@ -30,29 +30,16 @@
                     <mat-table #table [dataSource]="dataSource" matSort matSortActive="name" matSortDirection="asc"
                         (matSortChange)="sortData($event)" [hidden]="!hasSearch">
 
-                        <!-- Name -->
-                        <ng-container matColumnDef="name">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header="name">
+                        <!-- Title -->
+                        <ng-container matColumnDef="title">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header="title">
                                 <mat-icon class="tooltip-table"
                                     matTooltip="'Clique na seta para alterar a ordem de ordenação da tabela'"
                                     [matTooltipPosition]="'above'">help</mat-icon>
-                                Nome
+                                Titulo
                             </mat-header-cell>
                             <mat-cell *matCellDef="let item">
-                                <div [innerHtml]="item.name | highlight : filterValue"></div>
-                            </mat-cell>
-                        </ng-container>
-
-                        <!-- Type -->
-                        <ng-container matColumnDef="type">
-                            <mat-header-cell *matHeaderCellDef mat-sort-header="type">
-                                <mat-icon class="tooltip-table"
-                                    matTooltip="'Clique na seta para alterar a ordem de ordenação da tabela'"
-                                    [matTooltipPosition]="'above'">help</mat-icon>
-                                type
-                            </mat-header-cell>
-                            <mat-cell *matCellDef="let item">
-                                <div [innerHtml]="item.type | highlight : filterValue"></div>
+                                <div [innerHtml]="item.title | highlight : filterValue"></div>
                             </mat-cell>
                         </ng-container>
 

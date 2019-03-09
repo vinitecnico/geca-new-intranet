@@ -27,6 +27,7 @@
 $fa-font-path: "../node_modules/font-awesome/fonts";
 @import '~font-awesome/scss/font-awesome.scss';
 @import './scss/page/login';
+@import './scss/custom-components/upload.component';
 
 .bg-light {
     background-color: #3f51b5 !important;

@@ -10,7 +10,7 @@ declare var swal: any;
 // import { College } from '../../classes/college.class';
 
 // services
-import { NewsDatabaseService } from '../../services/news-database.service';
+import { NewsService } from '../../services/news.service';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 
 @Component({
@@ -20,13 +20,13 @@ import { UtilsService } from 'src/app/shared/services/utils.service';
 
 export class NewsListComponent implements OnInit {
     // Table elements
-    displayedColumns = ['name', 'type', 'status', 'edit', 'delete'];
+    displayedColumns = ['title', 'status', 'edit', 'delete'];
     dataSource = new MatTableDataSource<any>();
     pageIndex = 0;
     length = 0;
     pageSize = 10;
     pageSizeOptions = [5, 10, 15, 25];
-    sort = { active: 'name', direction: 'asc' };
+    sort = { active: 'title', direction: 'asc' };
     titleMsg: String = 'Não foram encontrados resultados!';
     showMessage: boolean;
     hasSearch: boolean;
@@ -35,7 +35,7 @@ export class NewsListComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild('searchTextRef') searchTextRef: ElementRef;
 
-    constructor(private router: Router, private newsDatabaseService: NewsDatabaseService, private utilsService: UtilsService) {
+    constructor(private router: Router, private newsService: NewsService, private utilsService: UtilsService) {
     }
 
     ngOnInit() {
@@ -74,10 +74,10 @@ export class NewsListComponent implements OnInit {
             request.value = this.filterValue;
         }
 
-        this.newsDatabaseService.getAll(request)
+        this.newsService.getAll(request)
             .subscribe((response: any) => {
-                this.length = response.data.filterNewsDatabase.total;
-                this.dataSource.data = response.data.filterNewsDatabase.data;
+                this.length = response.data.filterNews.total;
+                this.dataSource.data = response.data.filterNews.data;
 
                 if (this.length === 0) {
                     this.showMessage = true;
@@ -106,7 +106,7 @@ export class NewsListComponent implements OnInit {
 
     delete(_id: string) {
         swal({
-            text: 'Deseja realmente apagar o Database?',
+            text: 'Deseja realmente apagar a notícia?',
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#DD6B55',
@@ -117,11 +117,11 @@ export class NewsListComponent implements OnInit {
         })
             .then((isConfirm) => {
                 if (isConfirm) {
-                    this.newsDatabaseService.delete(_id)
+                    this.newsService.delete(_id)
                         .subscribe((data: any) => {
                             if (data) {
                                 swal({
-                                    text: `Database deletado com sucesso!`,
+                                    text: `Notícia deletado com sucesso!`,
                                     type: 'success'
                                 }).then(() => {
                                     this.getAll(this.pageIndex, this.pageSize);
