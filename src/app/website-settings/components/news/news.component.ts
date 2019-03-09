@@ -50,6 +50,8 @@ export class NewsComponent implements OnInit {
                     }
                 });
         }
+
+        this.uploadLogo.next(false);
     }
 
     setValueData(request): void {
@@ -66,11 +68,24 @@ export class NewsComponent implements OnInit {
         this.form.setValue(data);
     }
 
+    initSaveOrUpdate() {
+        if (!this.form.valid) {
+            swal({
+                text: 'Por favor validar todos os campos antes de finalizar cadastro!',
+                type: 'warning'
+            });
+            return;
+        }
+
+        this.uploadLogo.next(true);
+    }
+
     save() {
         if (!this.form.valid) {
             return;
         }
-
+        
+        this.uploadLogo.next(true);
         const request = this.form.value;
         this.newsService.createOrUpdate(request)
             .subscribe((response) => {
