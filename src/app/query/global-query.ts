@@ -6,17 +6,7 @@
 
 import gql from 'graphql-tag';
 
-export const loginUser = gql`
-  mutation loginUser($email: String!, $password: String!) {
-    loginUser(email: $email, password: $password) {
-      sucess
-      name
-      messsage
-      token
-    }
-  }`;  
-
-  export const filterNews = gql`
+export const filterNews = gql`
   mutation filterNews($value: String!, $page: String!, $perPage: String!, $active: String!, $direction: String!, $status: String!) {
     filterNews(value: $value, page: $page, perPage: $perPage, active: $active, direction: $direction, status: $status) {
       total
