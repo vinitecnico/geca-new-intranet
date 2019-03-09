@@ -1,4 +1,5 @@
-<app-breadcrumb [title]="'Cadastrar Notícia'" [domain]="'Listar'" [subDomain]="'/app/newslist'" [page]="'Notícia'"></app-breadcrumb>
+<app-breadcrumb [title]="'Cadastrar Notícia'" [domain]="'Listar'" [subDomain]="'/app/newslist'" [page]="'Notícia'">
+</app-breadcrumb>
 
 <div class="content">
     <div class="animated fadeIn card">
@@ -8,7 +9,7 @@
                     <form [formGroup]="form">
                         <div class="form-group col-md-12">
                             <div class="row">
-                                <div class="col-12 col-sm-10">
+                                <div class="col-12 col-sm-12">
                                     <mat-form-field class="full-width">
                                         <input matInput placeholder="Titulo" formControlName="title">
                                         <mat-error>
@@ -16,6 +17,24 @@
                                         </mat-error>
                                     </mat-form-field>
                                 </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-12">
+                                    <app-ngx-editor height="250px" minHeight="50px" enableToolbar="false"
+                                        [spellcheck]="true" formControlName="description">
+                                    </app-ngx-editor>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-sm-12">
+                                    <app-upload [parentForm]="form" [controlNameUrl]="'imageUrl'"
+                                        [controlName]="'fileName'" [placeholder]="'Imagem'"
+                                        [helpMessage]="'Dimensão recomendável para imagem: 500px de altura'"
+                                        [canUpload]="uploadLogo" (onUploaded)="onUploaded($event)">
+                                    </app-upload>
+                                </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-12 col-sm-2">
                                     <mat-form-field class="full-width">
                                         <mat-select placeholder="Status" formControlName="status">
@@ -25,34 +44,10 @@
                                         </mat-select>
                                     </mat-form-field>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-12">
-                                    <app-ngx-editor 
-                                        height="250px" 
-                                        minHeight="50px" 
-                                        enableToolbar="false"
-                                        [spellcheck]="true" 
-                                        formControlName="description">
-                                    </app-ngx-editor>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-12">
-                                    <app-upload [parentForm]="form"
-                                        [controlNameUrl]="'imageUrl'"
-                                        [controlName]="'fileName'"
-                                        [placeholder]="'Imagem'"
-                                        [helpMessage]="'Dimensão recomendável para imagem: 500px de altura'"
-                                        [canUpload]="uploadLogo" 
-                                        (onUploaded)="onUploaded($event)">
-                                    </app-upload>
-                                </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-12 col-sm-5">
                                     <mat-form-field class="full-width">
-                                        <input matInput placeholder="Tempo em Milissegundo" formControlName="showTimeMilliseconds" type="number">
+                                        <input matInput placeholder="Tempo em Milissegundo"
+                                            formControlName="showTimeMilliseconds" type="number">
                                         <mat-error>
                                             Campo obrigatório
                                         </mat-error>
