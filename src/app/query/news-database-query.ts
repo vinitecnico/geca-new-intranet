@@ -39,7 +39,7 @@ export const filterNewsDatabase = gql`
 
   export const updateNewsDatabase = gql`
   mutation updateNewsDatabase($id: String!, $name: String!, $url: String!, $status: Boolean!, $type: String!) {
-    updateNewsDatabase(id: $id:, name: $name, url: $url, status: $status, type: $type) {
+    updateNewsDatabase(name: $name, url: $url, status: $status, type: $type, id: $id) {
       id
     }
   }`;
