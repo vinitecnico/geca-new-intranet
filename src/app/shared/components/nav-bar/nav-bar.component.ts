@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-nav-bar',
@@ -9,5 +10,10 @@ export class NavBarComponent {
     isCollapsed = false;
     public currentLang: string;
 
-    constructor() { }
+    constructor(private router: Router) { }
+
+    logout() {
+        localStorage.setItem('authData', null);
+        this.router.navigateByUrl('/login');
+    }
 }

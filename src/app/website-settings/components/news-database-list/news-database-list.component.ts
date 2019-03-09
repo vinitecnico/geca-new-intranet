@@ -106,7 +106,7 @@ export class NewsDatabaseListComponent implements OnInit {
 
     delete(_id: string) {
         swal({
-            text: 'Deseja realmente apagar o Colégio?',
+            text: 'Deseja realmente apagar o Database?',
             type: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#DD6B55',
@@ -117,19 +117,19 @@ export class NewsDatabaseListComponent implements OnInit {
         })
             .then((isConfirm) => {
                 if (isConfirm) {
-                    // this.collegeService.delete(_id)
-                    //     .subscribe((data: any) => {
-                    //         if (data) {
-                    //             swal({
-                    //                 text: `Colégio deletada com sucesso!`,
-                    //                 type: 'success'
-                    //             }).then(() => {
-                    //                 this.getAll(this.pageIndex, this.pageSize);
-                    //             });
-                    //         }
-                    //     }, () => {
-                    //         this.getAll(this.pageIndex, this.pageSize);
-                    //     });
+                    this.newsDatabaseService.delete(_id)
+                        .subscribe((data: any) => {
+                            if (data) {
+                                swal({
+                                    text: `Database deletado com sucesso!`,
+                                    type: 'success'
+                                }).then(() => {
+                                    this.getAll(this.pageIndex, this.pageSize);
+                                });
+                            }
+                        }, () => {
+                            this.getAll(this.pageIndex, this.pageSize);
+                        });
                 }
             });
     }

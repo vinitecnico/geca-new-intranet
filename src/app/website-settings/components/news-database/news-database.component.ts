@@ -66,19 +66,19 @@ export class NewsDatabaseComponent implements OnInit {
         }
 
         const request = this.form.value;
-        // this.collegeService.createOrUpdateCollege(request)
-        //     .subscribe((response) => {
-        //         swal({
-        //             text: `Colégio ${!request._id ? 'criado' : 'alterado'} com sucesso!`,
-        //             type: 'success'
-        //         }).then(() => {
-        //             this.router.navigateByUrl('/registration/college-list');
-        //         });
-        //     }, (error) => {
-        //         swal({
-        //             text: 'Erro para criar Colégio!',
-        //             type: 'error'
-        //         });
-        //     });
+        this.newsDatabaseService.createOrUpdate(request)
+            .subscribe((response) => {
+                swal({
+                    text: `Database ${!request.id ? 'criado' : 'alterado'} com sucesso!`,
+                    type: 'success'
+                }).then(() => {
+                    this.router.navigateByUrl('/app/newsdatabaselist');
+                });
+            }, (error) => {
+                swal({
+                    text: 'Erro para criar Database!',
+                    type: 'error'
+                });
+            });
     }
 }

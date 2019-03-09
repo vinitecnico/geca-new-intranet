@@ -29,3 +29,17 @@ export const filterNewsDatabase = gql`
       status
     }
   }`;
+
+  export const addNewsDatabase = gql`
+  mutation addNewsDatabase($name: String!, $url: String!, $status: Boolean!, $type: String!) {
+    addNewsDatabase(name: $name, url: $url, status: $status, type: $type) {
+      id
+    }
+  }`;
+
+  export const removeNewsDatabase = gql`
+  mutation removeNewsDatabase($id: String!) {
+    removeNewsDatabase(id: $id) {
+      id
+    }
+  }`;

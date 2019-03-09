@@ -15,12 +15,12 @@
                     <i class="fa fa-database"></i> Database
                 </a>
             </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/star-wars']" (click)="isCollapsed = !isCollapsed">
-                    <i class="fa fa-space-shuttle"></i> {{'starWars' | translate}}
+            <li class="nav-item cursor-pointer">
+                <a class="nav-link" (click)="logout()">
+                    <i class="fa fa-close"></i> Sair
                 </a>
             </li>
-            <li class="nav-item" [ngClass]="{'active': activeUrl == '/recommended'}">
+            <!-- <li class="nav-item" [ngClass]="{'active': activeUrl == '/recommended'}">
                 <a class="nav-link" [routerLink]="['/recommended']" (click)="isCollapsed = !isCollapsed">
                     <i class="fa fa-thumbs-up"></i> {{'recommendeds' | translate}}
                 </a>
