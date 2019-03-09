@@ -42,10 +42,12 @@ export class NewsService {
                     mutation: Query.updateNews,
                     variables: {
                         id: news.id,
-                        name: news.name,
-                        url: news.url,
+                        title: news.title,
+                        description: news.description,
+                        imageUrl: news.imageUrl,
+                        fileName: news.fileName,
                         status: news.status,
-                        type: news.type
+                        showTimeMilliseconds: news.showTimeMilliseconds
                     }
                 });
         } else {
@@ -53,10 +55,12 @@ export class NewsService {
                 .mutate({
                     mutation: Query.addNews,
                     variables: {
-                        name: news.name,
-                        url: news.url,
+                        title: news.title,
+                        description: news.description,
+                        imageUrl: news.imageUrl,
+                        fileName: news.fileName,
                         status: news.status,
-                        type: news.type
+                        showTimeMilliseconds: news.showTimeMilliseconds
                     }
                 });
         }
@@ -64,11 +68,11 @@ export class NewsService {
 
     delete(_id: string): Observable<any> {
         return this.apollo
-                .mutate({
-                    mutation: Query.removeNews,
-                    variables: {
-                        id: _id
-                    }
-                });
+            .mutate({
+                mutation: Query.removeNews,
+                variables: {
+                    id: _id
+                }
+            });
     }
 }

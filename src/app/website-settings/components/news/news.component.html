@@ -27,10 +27,14 @@
                             </div>
                             <div class="row">
                                 <div class="col-12 col-sm-12">
-                                    <app-upload [parentForm]="form" [controlNameUrl]="'imageUrl'"
-                                        [controlName]="'fileName'" [placeholder]="'Imagem'"
+                                    <app-upload 
+                                        [parentForm]="form" 
+                                        [controlNameUrl]="'imageUrl'"
+                                        [controlName]="'fileName'" 
+                                        [placeholder]="'Imagem'"
                                         [helpMessage]="'Dimensão recomendável para imagem: 500px de altura'"
-                                        [canUpload]="uploadLogo" (onUploaded)="onUploaded($event)">
+                                        [canUpload]="uploadLogo" 
+                                        (onUploaded)="onUploaded($event)">
                                     </app-upload>
                                 </div>
                             </div>
