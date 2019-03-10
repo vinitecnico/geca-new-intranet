@@ -10,8 +10,8 @@ import { DashboardService } from '../../services/dashboard.service';
 
 export class DashboardComponent implements OnInit {
     item: {
-        database: 5,
-        news: 3
+        database: 0,
+        news: 0
     };
     constructor(private dashboardService: DashboardService) {
     }
