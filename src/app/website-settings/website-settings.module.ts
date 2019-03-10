@@ -35,6 +35,7 @@ import { ProductService } from './services/product.service';
 import { MenuService } from './services/menu.service';
 import { NewsDatabaseService } from './services/news-database.service';
 import { NewsService } from './services/news.service';
+import { DashboardService } from './services/dashboard.service';
 
 // Router
 import { WebsiteRoutingModule } from './website-routing.module';
@@ -77,6 +78,6 @@ import { SharedModule } from '../shared/shared.module';
     entryComponents: [
         ProductModalComponent, DeleteConfirmModalComponent
     ],
-    providers: [ProductService, MenuService, NewsDatabaseService, NewsService]
+    providers: [ProductService, MenuService, NewsDatabaseService, NewsService, DashboardService]
 })
 export class WebsiteSettingsModule { }

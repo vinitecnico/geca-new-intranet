@@ -1,5 +1,5 @@
 <div class="content">
-    <div class="row">
+    <div class="row" *ngIf="item">
         <div class="col-12 col-md-6">
             <div class="card cursor-pointer shadow rounded" [routerLink]="['/app/newsdatabaselist']">
                 <div class="card-body">
@@ -9,9 +9,9 @@
                         </div>
                         <div class="stat-content">
                             <div class="text-left dib">
-                                <div class="stat-text"><span class="count">2</span>
+                                <div class="stat-text"><span class="count">{{item?.database}}</span>
                                 </div>
-                                <div class="stat-heading">Databases</div>
+                                <div class="stat-heading">{{item?.database > 1 ? 'Databases' : 'Database'}}</div>
                             </div>
                         </div>
                     </div>
@@ -27,9 +27,9 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">1</span>
+                                    <div class="stat-text"><span class="count">{{item?.news}}</span>
                                     </div>
-                                    <div class="stat-heading">Notícia</div>
+                                    <div class="stat-heading">{{item?.news > 1 ? 'Notícias' : 'Notícia'}}</div>
                                 </div>
                             </div>
                         </div>
