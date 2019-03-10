@@ -11,11 +11,11 @@ export class DashboardService {
     }
 
     getAll() {
-        return this.apollo
-            .mutate({
-                mutation: Query.dashboard,
-                variables: {
-                }
-            });
+        // return this.apollo
+        //     .mutate({
+        //         mutation: Query.dashboard,
+        //         variables: {
+        //         }
+        //     });
     }
 }

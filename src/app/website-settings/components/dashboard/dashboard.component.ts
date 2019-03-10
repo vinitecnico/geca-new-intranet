@@ -9,14 +9,17 @@ import { DashboardService } from '../../services/dashboard.service';
 })
 
 export class DashboardComponent implements OnInit {
-    item: {};
+    item: {
+        database: 5,
+        news: 3
+    };
     constructor(private dashboardService: DashboardService) {
     }
 
     ngOnInit() {
-        this.dashboardService.getAll()
-        .subscribe((response: any) => {
-            this.item = response.data.dashboard;
-        });
+        // this.dashboardService.getAll()
+        // .subscribe((response: any) => {
+        //     this.item = response.data.dashboard;
+        // });
     }
 }
