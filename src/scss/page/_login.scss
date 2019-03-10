@@ -91,3 +91,57 @@ button.btn-new {
 .cursor-pointer{
   cursor: pointer;
 }
+
+
+.stat-widget-five {
+  min-height: 60px; }
+  .stat-widget-five .stat-icon {
+    font-size: 50px;
+    line-height: 50px;
+    position: absolute;
+    left: 30px;
+    top: 20px; }
+  .stat-widget-five .stat-content {
+    margin-left: 100px; }
+  .stat-widget-five .stat-text {
+    color: #455a64;
+    font-size: 20px; }
+  .stat-widget-five .stat-heading {
+    color: #99abb4;
+    font-size: 14px; }
+
+    /*    Widget One
+---------------------------*/
+.dib{
+  display: inline-block;
+}
+.stat-widget-one .stat-icon {
+vertical-align: top;
+}
+.stat-widget-one .stat-icon i {
+font-size: 30px;
+border-width: 3px;
+border-style: solid;
+border-radius: 100px;
+padding: 15px;
+font-weight: 900;
+display: inline-block;
+}
+.stat-widget-one .stat-content {
+margin-left: 30px;
+margin-top: 7px;
+}
+.stat-widget-one .stat-text {
+font-size: 14px;
+color: #868e96;
+}
+.stat-widget-one .stat-digit {
+font-size: 24px;
+color: #373757;
+}
+
+.stat-widget-three .stat-content {
+  text-align: center;
+  padding: 15px;
+  margin-left: 90px;
+}
