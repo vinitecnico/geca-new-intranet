@@ -17,9 +17,9 @@ export class DashboardComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.dashboardService.getAll()
-        // .subscribe((response: any) => {
-        //     this.item = response.data.dashboard;
-        // });
+        this.dashboardService.getAll()
+        .subscribe((response: any) => {
+            this.item = response.data.dashboard;
+        });
     }
 }

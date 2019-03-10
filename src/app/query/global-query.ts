@@ -6,13 +6,13 @@
 
 import gql from 'graphql-tag';
 
-// export const dashboard = gql`
-//   mutation dashboard {
-//     dashboard {
-//       database
-//       news
-//     }
-//   }`;
+export const dashboard = gql`
+  mutation dashboard {
+    dashboard {
+      database
+      news
+    }
+  }`;
 
 export const filterNews = gql`
   mutation filterNews($value: String!, $page: String!, $perPage: String!, $active: String!, $direction: String!, $status: String!) {
