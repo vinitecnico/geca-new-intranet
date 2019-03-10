@@ -1,8 +1,10 @@
-<div>
-  <div appPreloader class="preloaderbar hide">
-    <span class="bar"></span>
+<block-ui>
+  <div>
+    <div appPreloader class="preloaderbar hide">
+      <span class="bar"></span>
+    </div>
+    <div id="app-main" class="app-main full-height">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-  <div id="app-main" class="app-main full-height">
-    <router-outlet></router-outlet>
-  </div>
-</div>
+</block-ui>
